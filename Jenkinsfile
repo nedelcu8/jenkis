@@ -1,6 +1,7 @@
-pipeline{
+pipeline
+{
   agent any
-  
+
   stages{
     
     stage("buid"){
@@ -19,13 +20,9 @@ pipeline{
       } 
     }
       stage("deploy"){
-      
+
       steps {
         echo 'deploy the app'
-
-
       }
-  }
-  
-  
+  } 
 }
