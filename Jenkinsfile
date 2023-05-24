@@ -19,6 +19,11 @@ pipeline {
 
     stage("build jar "){
       steps{
+        when {
+          expression{
+            BRANCH_NAME == 'circleci-project-setup'
+          }
+        }
         script{
           gv.buildJar()
         }
@@ -27,6 +32,11 @@ pipeline {
 
     stage("build image"){
       steps{
+        when {
+          expression{
+            BRANCH_NAME == 'circleci-project-setup'
+          }
+        }
         script{
           gv.buildImage()
         }          
@@ -36,6 +46,11 @@ pipeline {
     stage("deploy"){
       steps{
         script{
+        when {
+          expression{
+            BRANCH_NAME == 'circleci-project-setup'
+          }
+        }
           gv.deployApp()
         }
       }
