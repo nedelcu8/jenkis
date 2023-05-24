@@ -2,7 +2,7 @@ pipeline
 {
   agent any
   parameters{
-    choice(name:'VERSION' , choises: ['11.1.0' , '11.1.1','12.0.0'] , description:'')
+    choice(name:'VERSION' , choices: ['11.1.0' , '11.1.1','12.0.0'] , description:'')
     boolParam(name:'executeTest' , defaultValue: true , description: '')
 
   }
