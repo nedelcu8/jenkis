@@ -12,6 +12,7 @@ pipeline {
       steps{
         script{
           gv = load("script.groovy")
+          echo "Executing pipeline for branch $BRANCH_NAME"
         }
       }
     }
