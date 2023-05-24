@@ -49,7 +49,9 @@ pipeline
           message "select the env "
           ok "env done"
           parameters {
-            choice(name:'ENV' , choices: ['dev' , 'stage','prod'] , description:'')
+            choice(name:'ENV1' , choices: ['dev' , 'stage','prod'] , description:'')
+            choice(name:'ENV2' , choices: ['dev' , 'stage','prod'] , description:'')
+            choice(name:'ENV3' , choices: ['dev' , 'stage','prod'] , description:'')
             
 
           }
@@ -58,7 +60,9 @@ pipeline
         script {
 
           gv.deployApp()
-          echo "deplaying with ${ENV}"
+          echo "deplaying with ${ENV1}"
+          echo "deplaying with ${ENV2}"
+          echo "deplaying with ${ENV3}"
 
         }
 
