@@ -1,3 +1,5 @@
+def gv
+
 pipeline {
   
   agent any
@@ -6,34 +8,40 @@ pipeline {
   }
   stages {
 
+    stage("init"){
+      steps{
+        script{
+          gv = load("script.groovy")
+        }
+      }
+    }
+
     stage("build jar "){
       steps{
         script{
-          echo "buing the app"
-          sh 'mvn package'
+          gvbuildJar()
         }
       }
     }
+
     stage("build image"){
       steps{
         script{
-          echo "buing the docker image"
-          withCredentials([usernamePassword(credentialsId: 'docker-hub' , passwordVariable: 'PASS' ,usernameVariable: 'USER')]){
-            sh 'docker build -t nedelcu8/my-repo:jma-2.0 .'
-            sh "echo $PASS | docker login -u $USER --password-stdin"
-            sh 'docker push nedelcu8/my-repo:jma-2.0'
-          }          
-        }
+          gv.buildImage()
+        }          
       }
     }
+
     stage("deploy"){
       steps{
         script{
-          echo "deploy the app"
+          gv.deployApp()
         }
       }
     }
 
   }
+
+
 }
 
