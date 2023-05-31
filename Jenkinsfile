@@ -38,6 +38,7 @@ pipeline {
         }
       steps{
         script{
+          echo 'remember to give jenkins permision to docker.socket'
           gv.buildImage()
         }          
       }
