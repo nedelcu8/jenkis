@@ -16,6 +16,22 @@ pipeline {
         }
       }
     }
+    stage("increment version "){
+        when {
+          expression{
+            BRANCH_NAME == 'circleci-project-setup'
+          }
+        }      
+      steps{
+        script{
+
+          gv.incrementVersion()
+        
+        
+        }
+      }
+    }
+
 
     stage("build jar "){
         when {
