@@ -1,12 +1,11 @@
 def incrementVersion(){
     echo "incrementing version"
-    sh ' mvn build-helper:parse-version version:set \
-    -DnewVersion=\\\${parsedVersion.majorVersion}.\\\${parsedVersion.minorVersion}.\\\${parsedVersion.nextIncrementalversion} \
-    versions:commit'
+    sh   'mvn build-helper:parse-version versions:set \
+          -DnewVersion=\\\${parsedVersion.majorVersion}.\\\${parsedVersion.minorVersion}.\\\${parsedVersion.nextIncrementalVersion} \
+          versions:commit'
 
 
 }
-
 
 def buildJar() {
     echo "building the application..."
