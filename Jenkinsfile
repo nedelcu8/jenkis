@@ -16,6 +16,22 @@ pipeline {
         }
       }
     }
+    stage("increment version "){
+        when {
+          expression{
+            BRANCH_NAME == 'circleci-project-setup'
+          }
+        }      
+      steps{
+        script{
+
+          gv.incrementVersion()
+        
+        
+        }
+      }
+    }
+
 
     stage("build jar "){
         when {
@@ -38,7 +54,6 @@ pipeline {
         }
       steps{
         script{
-          echo 'remember to give jenkins permision to docker.socket'
           gv.buildImage()
         }          
       }
