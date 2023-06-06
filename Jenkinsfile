@@ -7,7 +7,6 @@ pipeline {
     maven 'maven_version-3.9.2'
   }
   stages {
-
     stage("init"){
       steps{
         script{
@@ -16,6 +15,7 @@ pipeline {
         }
       }
     }
+
     stage("increment version "){
         when {
           expression{
@@ -24,15 +24,10 @@ pipeline {
         }      
       steps{
         script{
-
           gv.incrementVersion()
-        
-        
         }
       }
     }
-
-
     stage("build jar "){
         when {
           expression{
@@ -45,7 +40,6 @@ pipeline {
         }
       }
     }
-
     stage("build image"){
         when {
           expression{
